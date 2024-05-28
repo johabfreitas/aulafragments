@@ -54,7 +54,6 @@ class ConversasFragment : Fragment(){
         editNome = view.findViewById(R.id.editNome)
         textNome = view.findViewById(R.id.textNome)
 
-
         btnExecutar.setOnClickListener {
             textNome.text = editNome.text.toString()
         }
