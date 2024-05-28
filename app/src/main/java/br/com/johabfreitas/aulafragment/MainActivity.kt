@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import br.com.johabfreitas.aulafragment.databinding.ActivityMainBinding
 import br.com.johabfreitas.aulafragment.fragments.ChamadasFragment
 import br.com.johabfreitas.aulafragment.fragments.ConversasFragment
@@ -30,19 +32,30 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMercado.setOnClickListener {
 
-            val conversasFragment = ConversasFragment()
+            /*val conversasFragment = ConversasFragment()
+
+            val bundle = bundleOf(
+                "categoria" to "mercado",
+                "usuario" to "Johab"
+            )*/
+
+            //conversasFragment.arguments = bundle
+
+             /*supportFragmentManager
+                 .beginTransaction()
+                 .replace(R.id.fragment_conteudo, conversasFragment) // o método add adiciona o fragment e o replace substitui caso exista um fragment
+                 .commit()*/
 
             val bundle = bundleOf(
                 "categoria" to "mercado",
                 "usuario" to "Johab"
             )
+            supportFragmentManager.commit {
+                replace<ConversasFragment>(
+                    R.id.fragment_conteudo, args = bundle
+                )
+            }
 
-            conversasFragment.arguments = bundle
-
-             supportFragmentManager
-                 .beginTransaction()
-                 .replace(R.id.fragment_conteudo, conversasFragment) // o método add adiciona o fragment e o replace substitui caso exista um fragment
-                 .commit()
         }
 
         binding.btnChamadas.setOnClickListener{

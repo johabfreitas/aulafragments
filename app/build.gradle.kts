@@ -48,4 +48,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Android KTX (Fragment KTX do Jetpack)
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
+
 }
