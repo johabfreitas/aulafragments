@@ -6,12 +6,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import br.com.johabfreitas.aulafragment.R
 
+//class ConversasFragment : Fragment(R.layout.fragment_conversas){ //outra maneira de criar um fragment
 class ConversasFragment : Fragment(){
 
     val TAG = "ciclo_vida"
+
+    private lateinit var btnExecutar: Button
+    private lateinit var editNome: EditText
+    private lateinit var textNome: TextView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,6 +46,18 @@ class ConversasFragment : Fragment(){
             container,
             false //anexar ao elemento raiz(fragmentContainerView)
         )
+        /*
+        Aqui no fragment você deve construir e retornar essa visualização, conforme foi passado em "val view"
+        * */
+        // Processamento da visualização
+        btnExecutar = view.findViewById(R.id.btnExecutar)
+        editNome = view.findViewById(R.id.editNome)
+        textNome = view.findViewById(R.id.textNome)
+
+        val nome = editNome.text.toString()
+        btnExecutar.setOnClickListener {
+            textNome.text = nome
+        }
 
         return view
     }
@@ -91,8 +111,8 @@ class ConversasFragment : Fragment(){
     mas antes de qualquer interação do usuário. Ele permite restaurar o estado da UI usando
     os dados que foram salvos anteriormente no savedInstanceState.*/
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+    /*override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-    }
+    }*/
 
 }
