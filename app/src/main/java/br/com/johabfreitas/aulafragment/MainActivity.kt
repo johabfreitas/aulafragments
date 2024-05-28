@@ -3,6 +3,7 @@ package br.com.johabfreitas.aulafragment
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.com.johabfreitas.aulafragment.databinding.ActivityMainBinding
@@ -26,11 +27,21 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.add(R.id.fragment_conteudo, ConversasFragment())
         fragmentManager.commit()*/
 
-        //val conversasFragment = ConversasFragment()
-        binding.btnConversas.setOnClickListener {
+
+        binding.btnMercado.setOnClickListener {
+
+            val conversasFragment = ConversasFragment()
+
+            val bundle = bundleOf(
+                "categoria" to "mercado",
+                "usuario" to "Johab"
+            )
+
+            conversasFragment.arguments = bundle
+
              supportFragmentManager
                  .beginTransaction()
-                 .replace(R.id.fragment_conteudo, ConversasFragment()) // o método add adiciona o fragment e o replace substitui caso exista um fragment
+                 .replace(R.id.fragment_conteudo, conversasFragment) // o método add adiciona o fragment e o replace substitui caso exista um fragment
                  .commit()
         }
 

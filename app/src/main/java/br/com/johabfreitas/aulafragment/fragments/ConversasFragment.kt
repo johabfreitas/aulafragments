@@ -19,7 +19,11 @@ class ConversasFragment : Fragment(){
 
     private lateinit var btnExecutar: Button
     private lateinit var editNome: EditText
+    private lateinit var textCategoria: TextView
     private lateinit var textNome: TextView
+
+    private var categoria: String? = null
+    private var usuario: String? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -30,6 +34,8 @@ class ConversasFragment : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate: Fragment")
+        categoria = arguments?.getString("categoria")
+        usuario = arguments?.getString("usuario")
     }
 
     // Criar um fragment do zero, herdar da classe Fragment passando um construtor e
@@ -52,7 +58,11 @@ class ConversasFragment : Fragment(){
         // Processamento da visualização
         btnExecutar = view.findViewById(R.id.btnExecutar)
         editNome = view.findViewById(R.id.editNome)
-        textNome = view.findViewById(R.id.textNome)
+        textCategoria = view.findViewById(R.id.textCategoria)
+        textNome = view.findViewById(R.id.textNome) //Resultado
+
+        textCategoria.text = categoria
+        textNome.text = usuario
 
         btnExecutar.setOnClickListener {
             textNome.text = editNome.text.toString()
@@ -66,6 +76,9 @@ class ConversasFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         Log.i(TAG, "onViewCreated: Fragment")
     }
+
+
+    //Ciclo de vida
 
     override fun onStart() {
         super.onStart()
