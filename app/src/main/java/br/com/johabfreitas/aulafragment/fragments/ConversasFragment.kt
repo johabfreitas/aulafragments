@@ -54,9 +54,9 @@ class ConversasFragment : Fragment(){
         editNome = view.findViewById(R.id.editNome)
         textNome = view.findViewById(R.id.textNome)
 
-        val nome = editNome.text.toString()
+
         btnExecutar.setOnClickListener {
-            textNome.text = nome
+            textNome.text = editNome.text.toString()
         }
 
         return view
