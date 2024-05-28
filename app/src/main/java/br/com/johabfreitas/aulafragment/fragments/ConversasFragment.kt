@@ -89,7 +89,7 @@ class ConversasFragment : Fragment(){
     como uma rotação de tela, ou quando o fragmento foi interrompido e precisa ser recriado.
     Este método é chamado depois que a hierarquia da view do fragmento foi criada,
     mas antes de qualquer interação do usuário. Ele permite restaurar o estado da UI usando
-    os dados que foram salvos anteriormente no savedInstanceState. */
+    os dados que foram salvos anteriormente no savedInstanceState.*/
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
